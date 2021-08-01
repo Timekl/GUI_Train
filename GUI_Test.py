@@ -14,6 +14,8 @@ class QuestionGui:
         self.father_window = father_window
         self.data = read_csv()
 
+        self.row = 0
+
         # father_window 的相关参数
         self.sw = self.father_window.winfo_screenwidth()
         self.sh = self.father_window.winfo_screenheight()
@@ -30,26 +32,26 @@ class QuestionGui:
     def set_window(self):
         self.father_window.title('问答游戏')
         self.father_window.geometry('%dx%d+%d+%d' % (self.ww, self.wh, self.x, self.y))
-        self.init_question(0)
+        self.init_question()
         self.init_answer('')
         self.init_button()
 
     def init_button(self):
         const_width = self.ww / 5
-        button1 = Button(self.father_window, text='A', command=self.engineering('A'))
-        button2 = Button(self.father_window, text='B', command=self.engineering('B'))
-        button3 = Button(self.father_window, text='C', command=self.engineering('C'))
-        button4 = Button(self.father_window, text='D', command=self.engineering('D'))
-        button5 = Button(self.father_window, text='E', command=self.engineering('E'))
+        button1 = Button(self.father_window, text='A', command=lambda: self.engineering('A'))
+        button2 = Button(self.father_window, text='B', command=lambda: self.engineering('B'))
+        button3 = Button(self.father_window, text='C', command=lambda: self.engineering('C'))
+        button4 = Button(self.father_window, text='D', command=lambda: self.engineering('D'))
+        button5 = Button(self.father_window, text='E', command=lambda: self.engineering('E'))
         button1.place(x=0, y=self.wh - 30, width=const_width, height=30)
         button2.place(x=const_width, y=self.wh - 30, width=const_width, height=30)
         button3.place(x=const_width * 2, y=self.wh - 30, width=const_width, height=30)
         button4.place(x=const_width * 3, y=self.wh - 30, width=const_width, height=30)
         button5.place(x=const_width * 4, y=self.wh - 30, width=const_width, height=30)
 
-    def init_question(self, row):
+    def init_question(self):
         self.my_question.configure(state='normal')
-        data = self.data[row]
+        data = self.data[self.row]
         que = ''
         que = que + 'Question:\n\t' + data['Question'] + '\nOption:'
         for option in ['A', 'B', 'C', 'D', 'E']:
@@ -66,7 +68,17 @@ class QuestionGui:
         self.my_answer.configure(state='disable')
 
     def engineering(self, option):
-        pass
+        data = self.data[self.row]
+        option = option + ' next step'
+        if data[option] != '':
+            next_step = data[option].split(':')
+            operation = next_step[0]
+            operand = next_step[1]
+            if operation == 'jump':
+                self.row = int(operand) - 2
+                self.init_question()
+            elif operation == 'answer':
+                self.init_answer('Answer:\n\t' + operand)
 
     def show_data(self):
         for row in self.data:

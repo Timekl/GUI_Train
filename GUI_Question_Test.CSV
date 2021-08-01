@@ -1,2 +1,3 @@
-Question,A,Operation 1,B,Operation 2,C,Operation 3,D,Operation 4,E,Operation 5
-今天你吃饭了吗?,是,result:撑不死你,否,result:饿不死你,,,,,,
+Question,A,A next step,B,B next step,C,C next step,D,D next step,E,E next step
+今天你吃饭了吗?,是,answer:撑不死你,否,jump:3,,,,,,""
+打算吃饭吗?,是,answer:快点去吃吧,否,answer:饿不死你,,,,,,
