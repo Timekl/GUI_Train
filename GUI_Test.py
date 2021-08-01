@@ -29,8 +29,8 @@ class QuestionGui:
 if __name__ == '__main__':
     father_window = Tk()
     qg = QuestionGui(father_window)
-    qg.read_csv()
-    qg.show_data()
+    qg.set_windows()
+    father_window.mainloop()
 # root = Tk()
 #
 # li = ['C', 'python', 'php', 'html', 'SQL', 'java']
