@@ -1,17 +1,44 @@
 from tkinter import *
+import csv
 
-root = Tk()
 
-li = ['C', 'python', 'php', 'html', 'SQL', 'java']
-movie = ['CSS', 'jQuery', 'Bootstrap']
-listb = Listbox(root)  # 创建两个列表组件
-listb2 = Listbox(root)
-for item in li:  # 第一个小部件插入数据
-    listb.insert(0, item)
+class QuestionGui:
+    def __init__(self, father_window):
+        self.father_window = father_window
+        self.data = list()
 
-for item in movie:  # 第二个小部件插入数据
-    listb2.insert(0, item)
+    def set_windows(self):
+        pass
 
-listb.pack()  # 将小部件放置到主窗口中
-listb2.pack()
-root.mainloop()  # 进入消息循环
+    def engineering(self):
+        pass
+
+    def read_csv(self):
+        with open('GUI_Question_Test.CSV') as f:
+            read_data = csv.DictReader(f)
+            self.data = [row for row in read_data]
+
+    def show_data(self):
+        print(self.data)
+
+
+if __name__ == '__main__':
+    father_window = Tk()
+    qg = QuestionGui(father_window)
+    qg.read_csv()
+    qg.show_data()
+# root = Tk()
+#
+# li = ['C', 'python', 'php', 'html', 'SQL', 'java']
+# movie = ['CSS', 'jQuery', 'Bootstrap']
+# listb = Listbox(root)  # 创建两个列表组件
+# listb2 = Listbox(root)
+# for item in li:  # 第一个小部件插入数据
+#     listb.insert(0, item)
+#
+# for item in movie:  # 第二个小部件插入数据
+#     listb2.insert(0, item)
+#
+# listb.pack()  # 将小部件放置到主窗口中
+# listb2.pack()
+# root.mainloop()  # 进入消息循环
