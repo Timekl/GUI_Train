@@ -22,13 +22,16 @@ class QuestionGui:
         self.x = (self.sw - self.ww) / 2
         self.y = (self.sh - self.wh) / 2
 
+        self.my_question = Text(self.father_window)
+        self.my_question.place(x=0, y=0, width=self.ww / 2, height=self.wh - 30)
+        self.my_answer = Text(self.father_window)
+        self.my_answer.place(x=self.ww / 2, y=0, width=self.ww / 2, height=self.wh - 30)
+
     def set_window(self):
         self.father_window.title('问答游戏')
         self.father_window.geometry('%dx%d+%d+%d' % (self.ww, self.wh, self.x, self.y))
-        my_text = Text(self.father_window)
-        my_text.insert(1.0, 'asd')
-        my_text.configure(state='disable')
-        my_text.place(x=0, y=0, width=100, height=100)
+        self.init_question(0)
+        self.init_answer('')
         self.init_button()
 
     def init_button(self):
@@ -45,10 +48,22 @@ class QuestionGui:
         button5.place(x=const_width * 4, y=self.wh - 30, width=const_width, height=30)
 
     def init_question(self, row):
-        pass
+        self.my_question.configure(state='normal')
+        data = self.data[row]
+        que = ''
+        que = que + 'Question:\n\t' + data['Question'] + '\nOption:'
+        for option in ['A', 'B', 'C', 'D', 'E']:
+            if data[option] != '':
+                que = que + '\n\t' + option + ':' + data[option]
+        self.my_question.delete(1.0, END)
+        self.my_question.insert(1.0, que)
+        self.my_question.configure(state='disable')
 
     def init_answer(self, ans):
-        pass
+        self.my_answer.configure(state='normal')
+        self.my_answer.delete(1.0, END)
+        self.my_answer.insert(1.0, ans)
+        self.my_answer.configure(state='disable')
 
     def engineering(self, option):
         pass
