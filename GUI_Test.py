@@ -25,6 +25,10 @@ class QuestionGui:
     def set_window(self):
         self.father_window.title('问答游戏')
         self.father_window.geometry('%dx%d+%d+%d' % (self.ww, self.wh, self.x, self.y))
+        my_text = Text(self.father_window)
+        my_text.insert(1.0, 'asd')
+        my_text.configure(state='disable')
+        my_text.place(x=0, y=0, width=100, height=100)
         self.init_button()
 
     def init_button(self):
@@ -40,6 +44,12 @@ class QuestionGui:
         button4.place(x=const_width * 3, y=self.wh - 30, width=const_width, height=30)
         button5.place(x=const_width * 4, y=self.wh - 30, width=const_width, height=30)
 
+    def init_question(self, row):
+        pass
+
+    def init_answer(self, ans):
+        pass
+
     def engineering(self, option):
         pass
 
@@ -53,18 +63,3 @@ if __name__ == '__main__':
     qg = QuestionGui(main_window)
     qg.set_window()
     main_window.mainloop()
-# root = Tk()
-#
-# li = ['C', 'python', 'php', 'html', 'SQL', 'java']
-# movie = ['CSS', 'jQuery', 'Bootstrap']
-# listb = Listbox(root)  # 创建两个列表组件
-# listb2 = Listbox(root)
-# for item in li:  # 第一个小部件插入数据
-#     listb.insert(0, item)
-#
-# for item in movie:  # 第二个小部件插入数据
-#     listb2.insert(0, item)
-#
-# listb.pack()  # 将小部件放置到主窗口中
-# listb2.pack()
-# root.mainloop()  # 进入消息循环
