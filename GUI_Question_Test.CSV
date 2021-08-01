@@ -1,2 +1,2 @@
 Question,Option 1,Operation 1,Option 2,Operation 2,Option 3,Operation 3,Option 4,Operation 4,Option 5,Operation 5
-今天你吃饭了吗？,是,撑不死你,否,饿不死你,,,,,,
+今天你吃饭了吗?,是,result:撑不死你,否,result:饿不死你,,,,,,

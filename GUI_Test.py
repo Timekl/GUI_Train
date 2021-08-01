@@ -8,6 +8,9 @@ class QuestionGui:
         self.data = list()
 
     def set_windows(self):
+        self.father_window.title("问答游戏")
+
+    def init_window(self):
         pass
 
     def engineering(self):
@@ -19,7 +22,8 @@ class QuestionGui:
             self.data = [row for row in read_data]
 
     def show_data(self):
-        print(self.data)
+        for row in self.data:
+            print(row)
 
 
 if __name__ == '__main__':
