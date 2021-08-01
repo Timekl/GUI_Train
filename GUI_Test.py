@@ -7,8 +7,17 @@ class QuestionGui:
         self.father_window = father_window
         self.data = list()
 
+        # father_window 的相关参数
+        self.sw = self.father_window.winfo_screenwidth()
+        self.sh = self.father_window.winfo_screenheight()
+        self.ww = self.sw / 4
+        self.wh = self.sh / 4
+        self.x = (self.sw - self.ww) / 2
+        self.y = (self.sh - self.wh) / 2
+
     def set_windows(self):
-        self.father_window.title("问答游戏")
+        self.father_window.title('问答游戏')
+        self.father_window.geometry('%dx%d+%d+%d' % (self.ww, self.wh, self.x, self.y))
 
     def init_window(self):
         pass
